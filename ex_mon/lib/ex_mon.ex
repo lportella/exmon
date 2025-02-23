@@ -1,5 +1,6 @@
 defmodule ExMon do
   alias ExMon.{Game, Player}
+  alias ExMon.Game.Status
 
   @computer_name "Roboto"
 
@@ -9,7 +10,8 @@ defmodule ExMon do
 
   def start_game(player) do
     @computer_name
-    |> create_player(:punch, :kick, :heal)
-    |> Game.start(player)
+      |> create_player(:punch, :kick, :heal)
+      |> Game.start(player)
+    Status.print_round_message()
   end
 end
