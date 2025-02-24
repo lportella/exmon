@@ -13,7 +13,7 @@ defmodule ExMon do
     @computer_name
     |> create_player(:punch, :kick, :heal)
     |> Game.start(player)
-    Status.print_round_message(Game.info)
+    Status.print_round_message(Game.info())
   end
 
   def make_move(move) do
@@ -22,7 +22,7 @@ defmodule ExMon do
     |> handle_status(move)
   end
 
-  defp handle_status(:game_over, _), do: Status.print_round_message(Game.info)
+  defp handle_status(:game_over, _), do: Status.print_round_message(Game.info())
 
   defp handle_status(_, move) do
     move
@@ -38,7 +38,7 @@ defmodule ExMon do
       :move_heal -> Actions.heal()
       move -> Actions.attack(move)
     end
-    Status.print_round_message(Game.info)
+    Status.print_round_message(Game.info())
   end
 
   defp computer_move(%{turn: :computer, status: :continue}) do
